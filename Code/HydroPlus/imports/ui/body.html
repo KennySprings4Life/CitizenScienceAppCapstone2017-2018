@@ -57,7 +57,7 @@
   </nav>
 </template>
 
-<!--about Page -->
+<!--About Page -->
 <template name = "about" >
 	<!--Show the correct navigation bar based on if a user or not -->
 		 {{#if currentUser}}
@@ -75,6 +75,7 @@
 	</div>
 </template>
 
+<!--Home Page -->
 <template name="Home">
 	<!--Show the correct navigation bar based on if a user or not -->
 		 {{#if currentUser}}
@@ -98,7 +99,7 @@
   </div>
 </template>
 
-
+<!--Guest Home Page -->
 <template name="GuestHome">
 	<!--Show the correct navigation bar based on if a user or not -->
 	 {{#if currentUser}}
@@ -122,7 +123,7 @@
   </div>
 </template>
 
-
+<!--Initial Launch Page -->
 <template name="loginregister">
   <br>
   <h3>User Login</h3>
@@ -139,7 +140,7 @@
   </form>
 </template>
 
-
+<!--Login Page -->
 <template name="login">
     <h2>Login</h2>
     <form class="login">
@@ -149,7 +150,7 @@
     </form>
 </template>
 
-
+<!--Register Page -->
 <template name="register">
     <h2>Register</h2>
     <form class="register">
@@ -159,14 +160,14 @@
     </form>
 </template>
 
-
+<!--Charts for view submission page -->
 <template name="Chart">
   <div class="row">
     <canvas id="myChart" style="width: 375px; height: 375px"></canvas>
   </div>
 </template>
 
-
+<!--Gauge One submit page(Rio De Flag South) -->
 <template name="gaugeone">
 	<!--Show the correct navigation bar based on if a user or not -->
 		 {{#if currentUser}}
@@ -195,7 +196,7 @@
   </div>
 </template>
 
-
+<!--Gauge One submission page(Rio De Flag South) for logged in user -->
 <template name ="gaugeonesubmission">
 	<!--Show the correct navigation bar based on if a user or not -->
 		 {{#if currentUser}}
@@ -215,6 +216,7 @@
   </div>
 </template>
 
+<!--Gauge One submission page(Rio De Flag South) for Guest -->
 <template name ="gaugeonesubmissionguest">
 	<!--Show the correct navigation bar based on if a user or not -->
 		 {{#if currentUser}}
@@ -234,7 +236,7 @@
   </div>
 </template>
 
-
+<!--Home Page Gauge One Redirect for logged in user-->
 <template name="NavOne">
   <br>
   <form class ="submit1">
@@ -246,7 +248,7 @@
 	</form>
 </template>
 
-
+<!--Home Page Gauge One Redirect for guest-->
 <template name="GuestNavOne">
   <br>
   <form class ="submitGuest1">
@@ -258,6 +260,7 @@
 	</form>
 </template>
 
+<!--Change notification settings options -->
 <template name="NavNotificationSettings">
   <br>
   <form class ="notifsettings">
@@ -265,18 +268,13 @@
 	</form>
 </template>
 
-
+<!--The map seen on the home page by logged in user-->
 <template name="map">
   <div class="map-container">
-      <!-- {{> googleMap name="map" options=mapOptions}} -->
-      <!-- If there is a geolocation, display map
-      (Display markers of the water stations is still in progress.) -->
       {{#unless geolocationError}}
       {{> googleMap name="map" options=mapOptions}}
       {{calculateDistance}}
 
-      <!-- If no geolocation found, display error and map
-      (Display markers of the water stations is still in progress.)-->
       {{else}}
       Geolocation failed: {{geolocationError}}
       {{> googleMap name="map" options=mapOptions}}
@@ -284,17 +282,13 @@
   </div>
 </template>
 
+<!--The map seen on the home page by guest-->
 <template name="guestmap">
   <div class="map-container">
-      <!-- {{> googleMap name="map" options=mapOptions}} -->
-      <!-- If there is a geolocation, display map
-      (Display markers of the water stations is still in progress.) -->
       {{#unless geolocationError}}
       {{> googleMap name="map" options=mapOptions}}
       {{calculateDistance}}
 
-      <!-- If no geolocation found, display error and map
-      (Display markers of the water stations is still in progress.)-->
       {{else}}
       Geolocation failed: {{geolocationError}}
       {{> googleMap name="map" options=mapOptions}}
@@ -307,7 +301,7 @@
   {{calculateDistance}}
 </template>
 
-
+<!--Home Page Gauge Two Redirect for logged in user-->
 <template name="NavTwo">
   <br>
   <form class ="submit2">
@@ -319,7 +313,7 @@
 	</form>
 </template>
 
-
+<!--Home Page Gauge Two Redirect for guest-->
 <template name="GuestNavTwo">
   <br>
   <form class ="submitGuest2">
@@ -331,7 +325,7 @@
 	</form>
 </template>
 
-
+<!--Gauge Two submit page(Rio De Flag North) -->
 <template name="gaugetwo">
 	<!--Show the correct navigation bar based on if a user or not -->
 		 {{#if currentUser}}
@@ -360,7 +354,7 @@
  </div>
 </template>
 
-
+<!--Gauge Two submission page(Rio De Flag North) -->
 <template name ="gaugetwosubmission">
 	<!--Show the correct navigation bar based on if a user or not -->
 		 {{#if currentUser}}
@@ -380,7 +374,7 @@
   </div>
 </template>
 
-
+<!--Gauge Two submission page(Rio De Flag North) for Guest -->
 <template name ="gaugetwosubmissionguest">
 	<!--Show the correct navigation bar based on if a user or not -->
 		 {{#if currentUser}}
@@ -400,7 +394,7 @@
   </div>
 </template>
 
-
+<!--Home Page Gauge Three Redirect for logged in user-->
 <template name="NavThree">
   <br>
   <form class ="submit3">
@@ -412,7 +406,7 @@
 	</form>
 </template>
 
-
+<!--Home Page Gauge Three Redirect for guest-->
 <template name="GuestNavThree">
   <br>
   <form class ="submitGuest3">
@@ -424,7 +418,7 @@
 	</form>
 </template>
 
-
+<!--Gauge Two submit page(SICCS) -->
 <template name="gaugethree">
 	<!--Show the correct navigation bar based on if a user or not -->
 		 {{#if currentUser}}
@@ -453,7 +447,7 @@
  </div>
 </template>
 
-
+<!--Gauge Three submission page(SICCS) for Guest -->
 <template name ="gaugethreesubmission">
 	<!--Show the correct navigation bar based on if a user or not -->
 		 {{#if currentUser}}
@@ -473,7 +467,7 @@
   </div>
 </template>
 
-
+<!--Gauge Three submission page(SICCS) for Guest -->
 <template name ="gaugethreesubmissionguest">
 	<!--Show the correct navigation bar based on if a user or not -->
 		 {{#if currentUser}}
@@ -493,7 +487,7 @@
   </div>
 </template>
 
-
+<!--Notification Settings Page-->
 <template name="notificationSettings">
 	<!--Show the correct navigation bar based on if a user or not -->
 		 {{#if currentUser}}
@@ -507,11 +501,6 @@
      <input type="radio" name="notificationToggleForm" value="on">On <br>
      <input type="radio" name="notificationToggleForm" value="off">Off <br>
      <br>
-     <!-- <p>Time When Receive Notifications:</p>
-     <input type = "radio" name = "notificationTimeForm" value="5" id="timeRadio"> 5 minutes <br>
-     <input type = "radio" name = "notificationTimeForm" value="30" id="timeRadio"> 30 minutes <br>
-     <input type = "radio" name = "notificationTimeForm" value="60" id="timeRadio"> 1 hour <br>
-     <br> -->
      <p>Distance to Receive Notification (in meters)</p>
      <input type = "radio" name = "notificationProxForm" value="50" id="proxRadio"> 50  <br>
      <input type = "radio" name = "notificationProxForm" value="100" id="proxRadio"> 100 <br>
