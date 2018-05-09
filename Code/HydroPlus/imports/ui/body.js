@@ -11,7 +11,7 @@ import './body.html';
 
 // BEGIN Google Maps Global Variables
 var map_zoom = 11;
-var googleMapKey = 'AIzaSyB1fCJ_yz12oq37EQRAsoDXWf_G942FuGg';
+var googleMapKey = 'EnterGoogleMapKeyHere';
 var water_stations = [['Rio De Flag at Aspen Valley (south)', 35.198505, -111.594887,
                       '<h3>Rio De Flag at Aspen Valley (south)</h3> <br> <a href="/gaugeone"> Submit Data for this Location </a> <br> <a href="/gaugeonesubmission">View Submitted Data</a>'],
                       ['Rio de Flag at Aspen Valley (north)', 35.210533, -111.587653,
