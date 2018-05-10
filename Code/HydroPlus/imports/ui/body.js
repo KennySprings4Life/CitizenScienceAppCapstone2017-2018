@@ -1669,6 +1669,15 @@ function process_image(original_image, target_color){ //Pass an image to the fun
 }
 
 function _process_image(original_image, target_color){ //Could also pass an image to the function
+  // The variables that can be changed to more accurately locate and report stripes are as follows:
+  // ptc OR PERCENT_TARGET_COLOR
+  //   Defines the minumum minimum density of the target color for any given pixel
+  // area
+  //   Defines the minumum area that object of interest must be for them to be candidates for being stripes
+  // solidity
+  //   Stored as a percentage, the more solid an object is, the closer it is to being a square in shape
+  //   If the pole is angled, then the stripes will be less solid.
+  
   var return_list = [];
 
   var image = new cv.Mat();
@@ -1703,7 +1712,7 @@ function _process_image(original_image, target_color){ //Could also pass an imag
   // Works on:
   // --> cv.Mat()
   // --> cv.MatVector()
-  // --> cv.OtherShit()
+  // --> Other related OpenCV C/C++ objects
 
   colors.delete();
 
@@ -1941,7 +1950,6 @@ function _process_image(original_image, target_color){ //Could also pass an imag
   // OLD: cv.multiply(target_color_mask, new cv.Scalar(255.0), target_color_mask);
   // NEW:
   cv.multiply(target_color_mask, new cv.matFromArray(1, 1, cv.CV_64FC1, [255.0]), target_color_mask);
-  //Written by Ryan: ////Written by Ryan: //cv.imwrite(prefix+"target_color_mask_solidity.png", target_color_mask);
 
   // detect if no pole is present
   if (average_height < 10 || number_of_stripes < 2)
@@ -1997,7 +2005,6 @@ function _process_image(original_image, target_color){ //Could also pass an imag
   // ---cv.multiply(biggest_area_mask, new cv.Scalar(255.0), biggest_area_mask);
   // NEW:
   cv.multiply(biggest_area_mask, new cv.matFromArray(1, 1, cv.CV_64FC1, [255.0]), biggest_area_mask);
-  //Written by Ryan: //cv.imwrite(prefix+"biggest_area_mask.png", biggest_area_mask);
 
   // side clean
   var side_kernel = cv.getStructuringElement(cv.MORPH_RECT, new cv.Size(1, average_height)); // width, height
@@ -2005,18 +2012,11 @@ function _process_image(original_image, target_color){ //Could also pass an imag
   cv.dilate(biggest_area_mask, biggest_area_mask, side_kernel);
   cv.bitwise_and(biggest_area_mask, target_color_mask, target_color_mask);
   cv.multiply(biggest_area_mask, new cv.matFromArray(1, 1, cv.CV_64FC1, [255.0]), biggest_area_mask);
-  //Written by Ryan: //cv.imwrite(prefix+"side_clean.png", biggest_area_mask);
 
   cv.multiply(biggest_area_mask, new cv.matFromArray(1, 1, cv.CV_64FC1, [255.0]), biggest_area_mask);
-  //Written by Ryan: //cv.imwrite(prefix+"rotated.png", biggest_area_mask);
 
   cv.multiply(mask, new cv.matFromArray(1, 1, cv.CV_64FC1, [255.0]), mask);
   cv.multiply(dilate_mask, new cv.matFromArray(1, 1, cv.CV_64FC1, [255.0]), dilate_mask);
-
-  //Written by Ryan: //cv.imwrite(prefix+"mask.png", mask);
-  //Written by Ryan: //cv.imwrite(prefix+"rotated_image.png", image);
-  //Written by Ryan: //cv.imwrite(prefix+"dilate_mask.png", dilate_mask);
-  //Written by Ryan: //cv.imwrite(prefix+"target_color_mask_cleaned.png", target_color_mask);
 
   // now find coordinates of the pole
   // defaults, the 1 coords are left most
@@ -2064,7 +2064,6 @@ function _process_image(original_image, target_color){ //Could also pass an imag
   return_list.push([pole_x1, pole_x2, pole_y1, pole_y2]);
 
   console.log("Pole is located at %d %d %d %d\n", pole_x1, pole_x2, pole_y1, pole_y2);
-  console.log("Pole shit:");
   return return_list;
 }
 
